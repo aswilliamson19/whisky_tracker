@@ -14,6 +14,23 @@ import java.util.List;
 
 public class DistilleryRepositoryImpl implements DistilleryRepositoryCustom {
 
+    @Autowired
+    EntityManager entityManager;
 
+    @Transactional
+    public List<Distillery> findDistilleriesWith12YearOldWhisky(int ageToFind) {
+        List<Distillery> result = null;
+
+        Session session = entityManager.unwrap(Session.class);
+        try {
+            Criteria criteria = session.createCriteria(Distillery.class);
+            criteria.createAlias("whiskies", "whiskyAlias");
+            criteria.add(Restrictions.eq("whiskyAlias.age", ageToFind));
+            result = criteria.list();
+        } catch (HibernateException exception) {
+            exception.printStackTrace();
+        }
+        return result;
+    }
 
 }

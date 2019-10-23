@@ -14,8 +14,11 @@ import java.util.List;
 @RequestMapping(value = "/distilleries")
 public class DistilleryController {
 
+    @Autowired
+    DistilleryRepository distilleryRepository;
 
-
-
-
+    @GetMapping(value = "/whiskies/age/{age}")
+    public List<Distillery> findDistilleriesWith12YearOldWhisky(@PathVariable int age){
+        return distilleryRepository.findDistilleriesWith12YearOldWhisky(age);
+    }
 }

@@ -27,7 +27,6 @@ public class DataLoader implements ApplicationRunner {
         Distillery distillery1 = new Distillery("Glendronach", "Highland");
         distilleryRepository.save(distillery1);
 
-
         Whisky whisky1 = new Whisky("The Glendronach Revival", 15, 2018, distillery1);
         whiskyRepository.save(whisky1);
 
@@ -37,10 +36,8 @@ public class DataLoader implements ApplicationRunner {
         Whisky whisky2 = new Whisky("The Rosebank 12 - Flora and Fona", 12, 1991, distillery2);
         whiskyRepository.save(whisky2);
 
-
         Distillery distillery3 = new Distillery("Macallan", "Speyside");
         distilleryRepository.save(distillery3);
-
 
         Whisky whisky3 = new Whisky("The Macallan Anniversary Malt", 25, 1995, distillery3);
         whiskyRepository.save(whisky3);

@@ -1,7 +1,5 @@
 package com.codeclan.example.WhiskyTracker.repositories.WhiskyRepository;
 
-
-import com.codeclan.example.WhiskyTracker.models.Distillery;
 import com.codeclan.example.WhiskyTracker.models.Whisky;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
@@ -27,13 +25,11 @@ public class WhiskyRepositoryImpl implements WhiskyRepositoryCustom {
             Criteria criteria = session.createCriteria(Whisky.class);
             criteria.createAlias("distillery", "distilleriesAlias");
             criteria.add(Restrictions.eq("distilleriesAlias.region", regionToFind));
-
             result = criteria.list();
         }
         catch(HibernateException exception) {
             exception.printStackTrace();
         }
-
         return result;
     }
 }
